@@ -89,7 +89,7 @@
 </body>
 <script>
     document.getElementById('btnBackToIndex').addEventListener('click', function () {
-        window.location.href = "{{ route('sales.index') }}";
+        window.location.href = "{{ route('home') }}";
     });
 </script>
 </html>

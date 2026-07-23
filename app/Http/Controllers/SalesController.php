@@ -21,7 +21,7 @@ class SalesController extends Controller
         //read from the sale model
         
         $sales = Sale::all();
-        // dd($sales);
+        
         return view('index',[
             'sales' => $sales
         ]);
@@ -47,7 +47,6 @@ class SalesController extends Controller
     public function store(Request $request)
     {
         //
-        // dd($request->all());
         $request->validate([
             'store_code' => 'required',
             'transaction_amount' => 'required|numeric',
@@ -84,7 +83,6 @@ class SalesController extends Controller
     {
         //
         $sale = Sale::findOrFail($id);
-        // dd($sale);
         return view('edit', [
             'sale' => $sale
         ]);
@@ -105,7 +103,7 @@ class SalesController extends Controller
             'store_code' => 'required',
             'transaction_amount' => 'required|numeric',
         ]);
-        // dd($id);
+        
         $sale = Sale::findOrFail($id);
         
         $sale->update([
@@ -127,14 +125,14 @@ class SalesController extends Controller
     public function destroy($id)
     {
         //
-        // dd($id);
+        
         $sale = Sale::findOrFail($id);
         $sale->delete();
         return redirect()->route('sales.index');
     }
     public function export()
     {
-        // dd('Sales export');
+        
         return Excel::download(new SalesExport, 'sales.xlsx');
     }
     

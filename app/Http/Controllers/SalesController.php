@@ -19,7 +19,9 @@ class SalesController extends Controller
     public function index()
     {
         //read from the sale model
+        
         $sales = Sale::all();
+        // dd($sales);
         return view('index',[
             'sales' => $sales
         ]);
@@ -82,6 +84,7 @@ class SalesController extends Controller
     {
         //
         $sale = Sale::findOrFail($id);
+        // dd($sale);
         return view('edit', [
             'sale' => $sale
         ]);
@@ -124,6 +127,7 @@ class SalesController extends Controller
     public function destroy($id)
     {
         //
+        // dd($id);
         $sale = Sale::findOrFail($id);
         $sale->delete();
         return redirect()->route('sales.index');
